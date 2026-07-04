@@ -31,6 +31,30 @@
 $ pnpm install
 ```
 
+## Prisma setup
+
+Prisma is installed in this API app because the backend owns database access.
+
+The important files are:
+
+- `prisma/schema.prisma` - database models and datasource provider.
+- `prisma.config.ts` - tells Prisma where the schema, migrations, and `DATABASE_URL` are.
+- `.env` - local secrets such as `DATABASE_URL`; copy `.env.example` when setting up locally.
+- `src/prisma/prisma.service.ts` - Nest service used to inject Prisma into other services.
+
+Common commands:
+
+```bash
+# generate the typed Prisma client from schema.prisma
+$ pnpm prisma:generate
+
+# create and run a new migration after editing schema.prisma
+$ pnpm prisma:migrate
+
+# open Prisma Studio database browser
+$ pnpm prisma:studio
+```
+
 ## Compile and run the project
 
 ```bash
